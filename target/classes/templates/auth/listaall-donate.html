@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Todos os donates</title>
+
+<!--   	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+ -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/298a58dc0b.js"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<!-- 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+ -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+	<header>
+
+		<!-- Sidebar -->
+		<div class="w3-sidebar w3-bar-block slidebar-donate" style="width: 15%">
+		
+		
+			<a class="w3-bar-item h3-cadastro-donate">
+			
+			<img src="/imagens/logo2.png" width="100" height="100" style="margin-left: 30px;" class="d-inline-block align-top" alt="">
+    
+			</a>
+			
+			<div class="menu-slidebar">
+			<a href="#" class="w3-bar-item w3-button">
+			 <i class="fa-solid fa-house fa-lg"></i> <span class="slidebar-texto">Início</span></a> 
+			 <a href="#"
+				class="w3-bar-item w3-button"><i class="fa-solid fa-wallet fa-lg"></i> <span class="slidebar-texto">Meus pedidos</span></a>
+				
+				<a href="#"class="w3-bar-item w3-button">
+			 <i class="fa-sharp fa-solid fa-gear fa-lg"></i> <span class="slidebar-texto">Meus dados</span></a> 
+				
+				<a href="#"
+				class="w3-bar-item w3-button"><i class="fa-solid fa-right-from-bracket fa-lg"></i> <span class="slidebar-texto">Sair</span></a>
+				
+				
+				<a href="#"
+				class="w3-bar-item w3-button meu-git1"><i class="fa-brands fa-square-github fa-2xl" style="margin-left: 70px;"></i></a>		
+				</div>
+		</div>
+
+		<!-- Page Content -->
+		<div style="margin-left: 15%">
+
+
+
+			<nav class="navbar navbar-slidebar-menu">
+				<div class="container-fluid">
+					
+
+
+
+					<h3 class="h3-info-logado"> <i class="bi bi-person-heart"></i>
+						<span>:  <span th:text="${usuarios.nome}">TESTE</span></span>
+					</h3>
+					<a th:href="@{/logout}"><i class="fa-solid fa-right-from-bracket fa-xl icons-donate"></i></a>
+				</div>
+			</nav>
+			
+			
+			<div class="shadow-lg p-3 mb-5 bg-white rounded">
+			<div class="w3-container titulo-donate-cadastro">
+				<h1>Escolha um Donate!</h1>
+
+			</div>
+		
+			</div>
+			<div class="w3-container espacamento-listall-donate">
+			
+			
+			
+			<form method="GET" action="/api/donate/filtrarAll"
+						th:object="${produtos}">
+						<!-- th:object="${produto}" -->
+						<!--  -->
+						<div class="w3-container espacamento-listall-donate-my">
+			
+			<div class="col-md-20">
+						
+						<div class="input-group filtrar-donate-borda-all">
+        <div class="input-group-prepend">
+          
+          
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+          
+        </div>
+        <input name="nomepesquisa" type="text" class="form-control form-control-lg procurar-donate-all" id="validationTooltipUsername" placeholder="Procurar donates :)" aria-describedby="validationTooltipUsernamePrepend">
+        <div class="invalid-tooltip">
+         
+        </div>
+      </div>
+						
+			</div>
+			</div>			
+					
+
+
+					</form>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!--  <div class="col-md-10">
+      <div class="input-group filtrar-donate-borda">
+        <div class="input-group-prepend">
+          
+          
+          <button type="button" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+          
+        </div>
+        <input type="text" class="form-control form-control-lg procurar-donate" id="validationTooltipUsername" placeholder="Procure um donate!" aria-describedby="validationTooltipUsernamePrepend" required>
+        <div class="invalid-tooltip">
+         
+        </div>
+      </div>
+    </div>-->
+  </div>
+  
+  	
+			
+			<div class="row listaall-donate">
+			
+			<div class="card espacamento-listall-donate" th:each="produto : ${produtos}" style="width: 22rem;">
+  <img class="card-img-top" src="..." alt="Imagem" width="50px" height="200px" th:src="|/api/donate/imagem/${produto.id}|">
+  <div class="card-body">
+    <h5 th:text="${produto.nome}" class="card-title titulo-card-h5">Card title</h5>
+     
+    
+    <div class="row row-ajuste-info">
+    <p class="titulo-card-donate">Condição: </p>	
+    <p th:text="${produto.condicao}" class="card-text text-donate-th"></p>
+      </div>
+      
+<!--       <p th:text="${produto.usuario.nome}" class="card-text text-donate-th"></p> 
+ -->      
+      <div class="row">
+       <p class="titulo-card-donate">Quantidade: </p>	
+      <p th:text="${produto.quantidade}" class="card-text text-donate-th"></p>
+      </div>
+      <div class="row">
+      <p class="titulo-card-donate">Data cadastro: </p>
+      <p th:text="${#calendars.format(produto.dataDonate, 'dd/MM/yyyy HH:mm')}" class="card-text text-donate-th"></p>
+      </div>
+    
+      <div class="row">
+      <p class="titulo-card-donate"><i class="fa-solid fa-location-dot localizacao"></i></p>
+      &nbsp;
+      <span> &#32;</span>
+      <p th:text="${produto.usuario.endereco.cep}" class="card-text titulo-card-donate"> </p>
+      <span>&nbsp;  -  &nbsp;</span>
+      <p th:text="${produto.usuario.endereco.cidade.nome}" class="card-text titulo-card-donate"></p>
+      <span>&nbsp;,&nbsp;</span>
+      <p th:text="${produto.usuario.endereco.cidade.estado.nome}" class="card-text titulo-card-donate"></p>
+      
+      
+      </div>
+    
+    <div class="row">
+    <a href="#" class="btn btn-primary button-lista-donate-01" data-toggle="modal"
+									data-target="#modal-warning-listaall"
+									th:attr="data-target='#modal-warning-listaall'+${produto.id}"><i class="fa-solid fa-eye"></i></a>
+    <a th:href="@{/api/retirada/donate/{id}(id=${produto.id})}" class="btn btn-primary button-lista-donate"><i class="fa-solid fa-plus"></i> QUERO ESSE DONATE</a>
+    
+    
+    <div class="modal modal-warning fade in"
+										th:id="modal-warning-listaall+${produto.id}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="cabeçalho modal">
+													<button type="button" class="fechar" data-dismiss="modal"
+														aria-label="Fechar">
+														<span aria-hidden="true">ALOOO</span>
+													</button>
+													<h5 class="modal-title">Visualizar imagem</h5>
+													<h5 th:text="${produto.nome}"class="modal-title">Visualizar imagem</h5>
+												</div>
+												<div class="modal-body">
+													<!-- h3>..</h3>
+													<h5 th:text="${produto.nome}"class="modal-title">Visualizar imagem</h5>
+													<h5 th:text="${produto.descricao}"class="modal-title">Visualizar imagem</h5> -->
+													
+													<div class="text-center">
+														<img class="rounded" alt="Imagem" width="300px"
+															height="300px" th:src="|/api/donate/imagem/${produto.id}|">
+													</div>
+
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger"
+														data-dismiss="modal">Fechar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+  </div>
+</div>
+			
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- 		 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
+	<script type="text/javascript"
+		src="/js/vendors/donate.dialogo-excluir.js"></script>
+</body>
+</html>

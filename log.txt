@@ -1,0 +1,2 @@
+2022-12-15 12:02:18 [com.doacoesfinal.doacoesfinal.DoacoesfinalApplication] INFO: Iniciando aplicação
+2022-12-15 12:02:54 [com.doacoesfinal.doacoesfinal.DoacoesfinalApplication] INFO: Iniciando aplicação
