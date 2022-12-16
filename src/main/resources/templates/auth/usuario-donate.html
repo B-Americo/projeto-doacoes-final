@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect"
+xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+ 	<script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+ 	<script type="text/javascript" src="/js/vendors/cliente.combo-estado-cidade.js"></script>  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+     <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="/js/cadastro-produto-js/script.js"></script>
+  <title>Donate - Cadastro de usuários</title>
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <main>
+    <div class="container container-cadastro-usuario">
+
+
+      <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="card-header titulo-usuario-cadastro">
+          <h1>Faça o seu cadastro!</h1>
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+
+
+            <form class="row g-3 formulario-usuario-cadastro" novalidate method="POST" th:action="@{/api/usuario/novo}" th:object="${usuarios}"> <!--  " -->
+            
+
+              <div class="row">
+
+                <div class="col-md-9">
+                  <label for="validationCustom01" class="form-label label-usuario-cadastro">Nome:</label>
+                  <input required type="text" class="form-control" id="cadastro-nome" th:field ="*{nome}">
+                </div>
+
+  
+                <div class="col-md-3">
+                  <label for="validationCustom02" class="form-label label-usuario-cadastro">CPF:</label>
+                  <input type="text" class="form-control" placeholder="000.000.000-00" id="validationCustom02-cpf" value="" required th:field ="*{cpf}">
+                  <div class="valid-feedback">
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="validationCustom03" class="form-label label-usuario-cadastro">Celular:</label>
+                  <input type="text" class="form-control js-phone-number" placeholder="(00) 90000-0000" id="validationCustom03-telefone" required
+                    th:field ="*{telefone}">
+                </div>
+
+
+                <div class="col-md-5">
+                  <label for="exampleInputEmail1" class="form-label label-usuario-cadastro">Email:</label>
+                  <input required="required" th:field ="*{email}" type="email" class="form-control" id="cadastroemail" aria-describedby="emailHelp">
+                </div>
+
+
+
+
+
+                <h4 class="h4-info-usuario">Informações do endereço:</h4>
+
+
+                  <div class="col-sm-3">
+                    <label class="label-usuario-cadastro" id="">CEP:</label>
+                    <input th:field="*{endereco.cep}" id="cep" type="text" class="form-control" placeholder="00000000" aria-label="City" onblur="pesquisacep(this.value);">
+                  </div>
+
+
+
+                  <div class="col-sm-4">
+                    <label class="label-usuario-cadastro" id="">Rua:</label>
+                    <input th:field="*{endereco.logradouro}" id="rua" type="text" class="form-control" placeholder="..." aria-label="Zip" readonly>
+                  </div>
+                  
+                  
+                  <div class="col-sm-4">
+                    <label class="label-usuario-cadastro" id="">Bairro:</label>
+                    <input th:field="*{endereco.bairro}" id="bairro" type="text" class="form-control" placeholder="..." aria-label="Zip" readonly>
+                  </div>
+                  
+
+
+                  <div class="col-sm-1">
+                    <label class="label-usuario-cadastro" id="">Número:</label>
+
+                    <input th:field="*{endereco.numero}" type="text" class="form-control" placeholder="N°" aria-label="State">
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <label class="label-usuario-cadastro" id="">Complemento: </label>
+
+                    <input th:field="*{endereco.complemento}" type="text" class="form-control" placeholder="..." aria-label="Zip">
+                  </div>
+
+
+					<div class="col-sm-4">
+  						<label for="uf" class="label-usuario-cadastro">Estado:</label>
+  						<input  id="uf" th:field="*{endereco.cidade.estado.nome}"   type="text" class="form-control" placeholder="..." readonly>
+					</div>
+                  
+                  
+                  <div class="col-sm-4">
+  						<label for="cidade" class="label-usuario-cadastro">Cidade:</label>
+  						<input id="cidade" th:field="*{endereco.cidade.nome}" type="text" class="form-control" placeholder="..." readonly>
+				</div>  
+
+
+
+
+<!--
+
+                    <div class="col-md-4">
+                    <label class="label-usuario-cadastro" id="">Informe seu estado:</label>
+
+                    <label class="visually-hidden" for="inlineFormSelectPref"></label>
+                    <select name="estado" class="form-select" id="estado">
+                      <option value="">Selecione o estado</option>
+                      <option th:each="estado : ${estados}" th:value="${estado.id}"
+                        th:text="${estado.sigla} + ' - ' + ${estado.nome}"></option>
+
+                    </select>
+                  </div>
+                  
+                  -->
+                  
+  
+                  
+
+
+
+              <!--      <div class="col-md-4">
+                    <label class="label-usuario-cadastro" for="inlineFormSelectPref">Selecione o estado:</label>
+                    <label class="visually-hidden" for="inlineFormSelectPref"></label>
+                    <select name="cidade" class="form-select" id="cidade" data:url="@{/cidade}">
+                      <option value="">Selecione o estado</option>
+                      <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
+
+
+                    </select>
+                  </div> --> 
+
+                
+
+                <h4 class="h4-info-usuario">Informações para acesso:</h4>
+                    
+
+				<div class="row">
+
+  
+  <div class="input-group cadastro-username-senha">
+  		
+      <div class="input-group-text">    
+    	<span>  
+    		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+</svg>	
+    	</span>
+      
+      </div>
+       
+      <input name="username" type="text" class="form-control" id="form-label label-usuario-cadastro" placeholder="Username">
+    </div>
+ 
+          
+       
+       
+          
+          
+        <div class="input-group cadastro-username-senha">
+        
+        
+        
+      <div class="input-group-text">
+      
+       <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+  <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg></span>
+      
+      </div>
+      
+      <input name="password" type="password" class="form-control" id="form-label label-usuario-cadastro" placeholder="Password">
+    </div>
+ 		
+ 		
+ 		 <div class="col-md-4">
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelectGrid" required="required">
+        <option selected></option>
+        <option value="1">Enviar donates.</option>
+        <option value="2">Receber donates.</option>
+      </select>
+      <label class="col-md-4" for="floatingSelectGrid">O que deseja?</label>
+    </div>
+  </div>
+ 		
+ 		
+ 		
+ 		
+ 		
+
+              
+        </div>
+
+        
+ 	
+<select class="form-select form-select-lg mb-3 add-grupos-usuarios" th:field="*{grupo.nome}" aria-label=".form-select-lg example">
+  				<option value="Donate" selected>Donate</option> 
+ </select>
+				
+				
+				
+				 
+        
+        
+        
+        
+
+
+
+        <div class="row usuario-cadastro-button">
+
+        <div class="col-md-3">
+          <button class="btn btn-primary" onclick="cadastro()" type="submit">Crie a minha conta agora!</button>
+        </div>
+
+        <div class="col-md-5">
+        	
+        	<a href="/login"> 
+          <button class="btn btn-primary" type="button" >Logar-se</button></a>
+        </div>
+
+        </div>
+        </form>
+
+      </div>
+
+      </div>
+
+
+
+
+        </blockquote>
+      </div>
+    </div>
+
+
+    </div>
+
+
+
+  </main>
+    
+
+  <footer>
+
+  </footer>
+  
+  
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>

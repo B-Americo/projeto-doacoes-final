@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect"
+xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uii</title>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+    
+   <h1>Pesquisar meu Donate</h1>
+   
+   
+   <h1>Olá TESTE!</h1>
+    
+ <h3><span th:text="${usuarios.username}">TESTE</span></h3>  
+   
+   
+    
+   <div class="container-fluid">
+    <form method="GET" action="/api/teste/filtrar" th:object="${produtos}">
+    
+    
+    	
+    	<div class="mb-3 col-sm-5">
+  <label for="exampleFormControlInput1" class="form-label">Nome: </label>
+  <input type="text" name="nomepesquisa">
+</div>
+  
+  <button type="submit" class="btn btn-primary">Buscar</button>
+
+      	
+    </form>	
+    
+    
+    
+    
+    
+    
+    <form method="GET" action="/api/donate/filtrar" th:object="${produtos}"><!-- th:object="${produto}" --> <!--  -->
+    	
+    	<div class="mb-3 col-sm-5">
+  <label for="exampleFormControlInput1" class="form-label">Nome: </label>
+  <input type="text" name="nomepesquisa">
+</div>
+  
+  <button type="submit" class="btn btn-primary">Buscar</button>
+    	
+    	
+     </form>
+    
+    
+    <table class="table table-striped">
+    <thead>
+  		<tr>
+  	  <th scope="col">Id</th>
+  	  <th scope="col">Imagem</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Condicão</th>
+      <th scope="col">########</th>
+  		</tr>
+  		</thead>
+  		
+  		<tbody>
+  		
+  			<tr th:each="produto : ${produtos}">
+  			<td th:text="${produto.id}">Id</td>
+  			<td>
+  			<img alt="Imagem" width="70px" height="70px" th:src="|donate/imagem/${produto.id}|"> 
+  			
+  			|
+  			<!--  <a href="api/teste" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-eye-fill"> -->
+  			
+			
+			
+			<a th:attr="data-target='/donate/imagem/'+${produto.getId()}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Button
+</a>
+			
+			
+  			
+  		
+  			
+  			
+  			
+  			</i></a>
+  			</td>
+  			<td th:text="${produto.nome}">Nome</td>
+  			<td th:text="${produto.condicao}"></td>
+  			<td> 
+  				<a class="js-exclusao-btn" href="">Editar</a> | 
+  				
+  				<a id="olamundo" th:href="@{/api/donate/excluir/{id}(id=${produto.id})}"><i class="bi bi-eraser">Eix</i></a>
+  				
+  				
+  				
+  				<a type="button" data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${produto.id }">New</a>
+  				
+  				
+  				
+  				
+  				
+  				<div class="modal modal-warning fade in" th:id="modal-warning+${produto.id}" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="cabeçalho modal">
+                <button type="button" class="fechar" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">Excluir usuário</h5>
+                
+            </div>
+            <div class="modal-body">
+                <h3>Tem certeza que deseja excluir este usuário?</h3>
+                <img alt="Imagem" width="70px" height="70px" th:src="|donate/imagem/${produto.id}|">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Fechar</button>
+                <a type="button" class="btn btn-outline" th:href="@{/api/donate/excluir/{id}(id=${produto.id})}"><i class="fa fa -check"></i> Sim</a>
+            </div>
+        </div>
+    </div>
+</div>
+  				
+  				
+  		<a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" th:attr="data-bs-target='#staticBackdrop'+${produto.id }">
+  Button
+</a>
+			
+			
+  			
+  			
+  			<!-- Modal -->
+			<div class="modal" tabindex="-1" id="staticBackdrop">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+  					
+  	
+  	
+  	
+  				
+  				
+  				
+  				
+  				
+  				
+  				
+  				
+  				
+  				
+  			
+  			</td>
+  			
+  			</tr>
+  			
+  			<tr th:if="${#lists.isEmpty(produtos)}">
+  				<td colspan="7">Nenhum donate cadastrado :(</tr>
+  			
+  		</tbody>
+</table>
+    
+    <!-- Modal -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        <img alt="Imagem" width="70px" height="70px" th:src="|donate/imagem/${produto.id}|">
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Understood</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+   
+    
+    
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+    
+    
+    <!-- TESTE, FILTRAR APENAS AS VENDAS DO USUARIO LOGADO -->
+    
+    
+    
+    <table class="table table-striped">
+    <thead>
+  		<tr>
+  	  <th scope="col">Id</th>
+  	  <th scope="col">Imagem</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Condicão</th>
+      <th scope="col">########</th>
+  		</tr>
+  		</thead>
+  		
+  		<tbody>
+  		
+  			<tr th:each="produto : ${testetestando}">
+  			<td th:text="${produto.id}">Id</td>
+  			<td>
+  			<img alt="Imagem" width="70px" height="70px" th:src="|donate/imagem/${produto.id}|"> 
+  			
+  			|
+  			<!--  <a href="api/teste" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-eye-fill"> -->
+  			
+			
+			
+			<a th:attr="data-target='/donate/imagem/'+${produto.getId()}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Button
+</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    	
+    </div>
+    
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    </body>
+    </html>

@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/*NAVBAR E SLIDEBAR*/
+
+.navbar-slidebar-menu{
+	background-color: #2f3640;
+}
+
+.icons-donate{
+	color: #f5f6fa;
+}
+
+
+.menu-slidebar{
+	margin-top: 80px;
+}
+
+
+.slidebar-donate{
+	background-color: #f1c40f;
+}
+
+.localizacao{
+	color: red;
+}
+
+
+.h3-cadastro-donate{
+	background-color: #2f3640;
+	color: white;
+	height: 54px;
+}
+
+.h3-info-logado{
+	color: white;
+}
+
+.slidebar-texto{
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+}
+
+.titulo-card-donate{
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+}
+.display-flex-info-donate{
+	display: flex;
+}
+
+.titulo-card-h5{
+	font-family: 'Roboto', sans-serif;
+	font-size: 22px;
+	text-align: center;
+	 
+}
+
+.button-lista-donate-01{
+	width: 50px;
+	margin-left: 2px;
+}
+
+
+
+
+.button-lista-donate{
+	margin-left: 4px;
+	width: 240px;
+}
+
+
+
+.text-donate-th{
+	margin-left: 5px;
+	font-size: 15px;
+}
+
+.row-ajuste-info{
+	margin-top: 10px;
+}
+
+
+.categoria-donate-ajuste::first-letter{
+	text-transform: uppercase;
+}
+
+
+/*FIM NAVBAR E SLIDEBAR*/
+
+
+
+
+
+/*LOGIN*/
+
+.container-login-usuario{
+    display: flex;
+    justify-content: center;
+    
+   margin-top: 50px;
+
+}
+
+.login-h2{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.imagem-login-ajuste{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.card-posicao-login{
+    align-items: center;
+}
+
+.login-usuario-form{
+    width: 330px;
+}
+
+
+.button-login{
+    margin-top: 40px;
+}
+
+.button-login-entrar{
+	border-radius: 30px;
+}
+
+
+
+/*FIM LOGIN*/
+
+
+
+
+
+
+
+
+
+
+
+/* CADASTRO USUÁRIO*/
+.container-cadastro-usuario{
+    margin-top: 12px;
+}
+
+.titulo-usuario-cadastro{
+
+    background-color: orange;
+}
+
+
+
+
+
+.h4-info-usuario{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.label-usuario-cadastro{
+    
+    font-size: 17px;
+}
+
+.formulario-usuario-cadastro{
+    margin-left: 17px;
+    margin-top: 0.5px;
+}
+
+.usuario-cadastro-button{
+    margin-top: 20px;
+}
+
+
+.cadastro-username-senha{
+	width: 300px;
+	height: 40px;
+}
+
+.add-grupos-usuarios{
+	display: none;
+}
+
+
+
+/*FIM DO CADASTRO*/
+
+
+/*CADASTRO DONATE*/
+
+.imagem-cadastro-donate{
+	margin-top: 20px;
+	margin-left: 140px;
+}
+
+.imagem-alinhar-cadastro-donate{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.titulo-donate-cadastro{
+	margin-top: 7px;
+	text-align: center;
+	border-radius: 50px;
+	background-color:  #ee5253;
+	color: #f5f6fa;
+	font-family: 'Roboto', sans-serif;
+	font-size: 100px;
+
+}
+
+.pesquisa-cadastro-meus{
+	height: 10px;
+	width: 200px;
+}
+
+
+
+
+
+.titulo-donate-cadastro-pesquisa{
+	margin-top: 70px;
+	text-align: center;
+	border-radius: 50px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+
+}
+
+.button-salvar-cadastro-donate{
+	border-radius: 50px;
+	width: 260px;
+	height: 35px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.finalizado-donate-fim{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin-left: 230px;
+	margin-top: 20px;
+}
+
+
+
+.shadow-tr{
+	
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button-finalizar{
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.button-finalizar-A{
+	width: 300px;
+}
+
+
+
+
+.button-cadastro-donate-new{
+	display: flex;
+	
+}
+.text-button-salvar{
+	
+}
+
+.imagem-upload-donate{
+	margin-left: 200px;
+	width: 800px;
+	height: 200px;
+}
+
+
+.img-fluid{
+	margin-top: 30px;
+	margin-left: 120px;
+}
+
+.file-imagem{
+	margin-top: 10px;
+}
+
+.button-excluir{
+	margin-top: 20px;
+}
+
+
+.meu-git{
+	margin-top: 300px;
+	
+}
+.meu-git1{
+	margin-top: 250px;
+}
+
+/*FIM DONATE*/
+
+
+/*LISTA ALL*/
+
+.espacamento-listall-donate{
+	display: flex;
+  flex-wrap: wrap;
+  margin-left: 45px;
+  margin-top: 40px; 
+}
+
+.espacamento-listall-donate-my{
+	display: flex;
+  flex-wrap: wrap;
+  margin-left: 45px;
+  margin-top: 40px; 
+}
+
+
+.button-cadastro-donate-new{
+	align-items: center;
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+
+
+
+.listaall-donate{
+	margin-left: 20px;
+}
+
+.filtrar-donateall{
+	display: flex;
+	justify-content: center;
+}
+
+.procurar-donate{
+	border-radius: 10px;
+}
+.filtrar-donate-borda{
+	border-radius: 50px;
+	margin-left: 80px;
+}
+
+.procurar-donate-all{
+	
+	
+}
+
+
+
+.filtrar-donate-borda-all{
+	border-radius: 50px;
+	margin-left: 200px;
+}
+/*FIM LISTA ALL*/
